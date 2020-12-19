@@ -8,12 +8,12 @@ class ToDoList {
                 {
                     "title": "hacer la compra", 
                     "done": true,
-                    "date": "19/12/2021"
+                    "date": "08/12/2021"
                 },
                 {
                     "title": "sacar al perro", 
                     "done": false,
-                    "date": "21/12/2021"
+                    "date": "11/12/2021"
                 }
             ]
         };
@@ -24,16 +24,15 @@ class ToDoList {
     printItems() {
         const htmlListElements = this.database.items.map(
             (element) => {
-                return `<li>${element.title}</li>`;
+                return `<li>${element.date} - ${element.title}</li>`;
             }
         )
         const list = document.getElementById('to-dos');
-        list.innerHTML = htmlListElements;
+        list.innerHTML = htmlListElements.join('');
     }
 
     insertItem(event) {
         event.preventDefault();
-        debugger;
         const newItem = {
             title: event.srcElement[0].value,
             done: false,
@@ -45,7 +44,7 @@ class ToDoList {
 
     getTodayDate() {
         const todayDate = new Date();
-        const day = todayDate.getDay();
+        const day = todayDate.getDate();
         const month = todayDate.getMonth() +1;
         const year = todayDate.getFullYear();
 
